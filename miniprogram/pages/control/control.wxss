@@ -1,0 +1,164 @@
+/* 设备控制页 */
+.page {
+  padding: 0 24rpx 32rpx;
+  min-height: 100vh;
+}
+
+/* ===== 顶部 ===== */
+.ctrl-hero {
+  margin: 0 -24rpx 24rpx;
+  padding: 36rpx 32rpx 32rpx;
+  background: linear-gradient(160deg, #2D3436 0%, #636E72 100%);
+  border-radius: 0 0 32rpx 32rpx;
+  color: #FFF;
+  text-align: center;
+}
+
+.ctrl-hero-icon {
+  font-size: 48rpx;
+  display: block;
+  margin-bottom: 12rpx;
+}
+
+.ctrl-hero-title {
+  font-size: 34rpx;
+  font-weight: 600;
+  display: block;
+}
+
+.ctrl-hero-sub {
+  font-size: 22rpx;
+  opacity: 0.6;
+  margin-top: 6rpx;
+  display: block;
+}
+
+/* ===== 总览 ===== */
+.summary-bar {
+  display: flex;
+  align-items: center;
+  background: var(--color-card);
+  border-radius: 20rpx;
+  padding: 28rpx 0;
+  margin-bottom: 24rpx;
+  box-shadow: 0 4rpx 20rpx rgba(0,0,0,0.06);
+}
+
+.summary-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6rpx;
+}
+
+.summary-div {
+  width: 1rpx;
+  height: 48rpx;
+  background: var(--color-border);
+}
+
+.sum-count {
+  font-size: 48rpx;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.sum-label {
+  font-size: 22rpx;
+  color: var(--color-text-hint);
+}
+
+/* ===== 控制卡片 ===== */
+.ctrl-card {
+  background: var(--color-card);
+  border-radius: 20rpx;
+  margin-bottom: 16rpx;
+  box-shadow: 0 4rpx 20rpx rgba(0,0,0,0.06);
+  overflow: hidden;
+}
+
+.ctrl-card-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 28rpx 32rpx;
+}
+
+.ctrl-left {
+  display: flex;
+  align-items: center;
+  gap: 20rpx;
+}
+
+.ctrl-icon-box {
+  width: 72rpx;
+  height: 72rpx;
+  border-radius: 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.led-icon   { background: #FFF8E1; }
+.servo-icon { background: #E0F7FA; }
+.fan-icon   { background: #E8F5E9; }
+
+.ctrl-icon {
+  font-size: 36rpx;
+}
+
+.ctrl-name {
+  font-size: 30rpx;
+  font-weight: 600;
+  color: var(--color-text);
+  display: block;
+}
+
+.ctrl-hint {
+  font-size: 22rpx;
+  color: var(--color-text-hint);
+  margin-top: 4rpx;
+  display: block;
+}
+
+/* switch 放大 */
+.ctrl-switch {
+  transform: scale(1.1);
+}
+
+/* 状态条 */
+.ctrl-status {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8rpx;
+  padding: 12rpx 0;
+  font-size: 22rpx;
+  border-top: 1rpx solid var(--color-border);
+}
+
+.ctrl-status.on {
+  color: var(--color-success);
+  background: #F0FFF4;
+}
+
+.ctrl-status.off {
+  color: var(--color-text-hint);
+  background: #F7F8FA;
+}
+
+.ctrl-dot {
+  width: 10rpx;
+  height: 10rpx;
+  border-radius: 50%;
+}
+
+.dot-on {
+  background: var(--color-success);
+  box-shadow: 0 0 6rpx var(--color-success);
+}
+
+.dot-off {
+  background: #CCC;
+}

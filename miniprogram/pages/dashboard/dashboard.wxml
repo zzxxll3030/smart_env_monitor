@@ -1,0 +1,57 @@
+<!-- 数据看板 - 实时环境监测 -->
+<view class="page">
+
+  <!-- 顶部渐变头 -->
+  <view class="hero">
+    <view class="hero-row">
+      <text class="hero-tag">● 在线监测中</text>
+      <text class="hero-refresh" bindtap="onRefresh">↻ 刷新</text>
+    </view>
+    <text class="hero-time">{{timeText}}</text>
+    <text class="hero-sub">更新时间 {{lastUpdate}}</text>
+  </view>
+
+  <!-- 错误提示 -->
+  <view wx:if="{{errorMsg}}" class="error-bar">
+    <text class="error-text">⚠ {{errorMsg}}</text>
+  </view>
+
+  <!-- 加载中 -->
+  <view wx:if="{{loading && cards.length === 0}}" class="loading">
+    <view class="loading-spinner"></view>
+    <text>正在获取数据...</text>
+  </view>
+
+  <!-- 传感器卡片 2×2 -->
+  <view class="card-grid">
+    <view wx:for="{{cards}}" wx:key="type" class="sensor-card card-{{item.type}}">
+      <view class="sc-top">
+        <view class="sc-label-row">
+          <text class="sc-icon" wx:if="{{item.type === 'temp'}}">🌡️</text>
+          <text class="sc-icon" wx:elif="{{item.type === 'humid'}}">💧</text>
+          <text class="sc-icon" wx:elif="{{item.type === 'light'}}">☀️</text>
+          <text class="sc-icon" wx:else>📏</text>
+          <text class="sc-label">{{item.label}}</text>
+        </view>
+        <text class="sc-value" style="color: {{item.color}}">{{item.value}}</text>
+        <text class="sc-unit">{{item.unit}}</text>
+      </view>
+      <view class="sc-bar">
+        <view class="sc-bar-fill" style="width: {{item.percent}}%; background: {{item.color}}"></view>
+      </view>
+      <view class="sc-range">
+        <text wx:if="{{item.type === 'temp'}}">-10 ~ 60°C</text>
+        <text wx:elif="{{item.type === 'humid'}}">0 ~ 100%</text>
+        <text wx:elif="{{item.type === 'light'}}">0 ~ 100%</text>
+        <text wx:else>0 ~ 50cm</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 底部状态 -->
+  <view class="status-bar">
+    <view class="status-pulse"></view>
+    <text class="status-text">设备正常 · 每2秒自动刷新</text>
+  </view>
+
+</view>

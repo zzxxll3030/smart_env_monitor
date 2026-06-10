@@ -1,0 +1,205 @@
+/* 我的 - 信息总览页 */
+.page {
+  min-height: 100vh;
+  padding: 24rpx;
+  box-sizing: border-box;
+}
+
+/* ===== 分区 ===== */
+.section {
+  margin-bottom: 24rpx;
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 8rpx 16rpx;
+}
+
+.section-title {
+  font-size: 30rpx;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.section-time {
+  font-size: 22rpx;
+  color: var(--color-text-hint);
+}
+
+/* ===== 设备信息卡片 ===== */
+.info-card {
+  background: var(--color-card);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  padding: 24rpx 32rpx;
+}
+
+.info-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12rpx 0;
+}
+
+.info-divider {
+  height: 1rpx;
+  background: var(--color-border);
+}
+
+.info-label {
+  font-size: 28rpx;
+  color: var(--color-text-secondary);
+}
+
+.info-value {
+  font-size: 26rpx;
+  color: var(--color-text);
+  font-weight: 500;
+}
+
+.mono {
+  font-family: 'Courier New', monospace;
+  letter-spacing: 1rpx;
+}
+
+/* ===== 传感器网格 ===== */
+.sensor-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16rpx;
+}
+
+.sensor-item {
+  background: var(--color-card);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  padding: 28rpx 20rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-top: 6rpx solid transparent;
+}
+
+.sensor-item.temp  { border-top-color: var(--color-temp); }
+.sensor-item.humid { border-top-color: var(--color-humid); }
+.sensor-item.light { border-top-color: var(--color-light); }
+.sensor-item.dist  { border-top-color: var(--color-dist); }
+
+.sensor-icon {
+  font-size: 36rpx;
+  margin-bottom: 8rpx;
+}
+
+.sensor-value {
+  font-size: 48rpx;
+  font-weight: 700;
+  color: var(--color-text);
+  line-height: 1.2;
+}
+
+.sensor-unit {
+  font-size: 22rpx;
+  color: var(--color-text-hint);
+  margin-bottom: 8rpx;
+}
+
+.sensor-label {
+  font-size: 24rpx;
+  color: var(--color-text-secondary);
+}
+
+/* ===== 执行器状态 ===== */
+.actuator-list {
+  background: var(--color-card);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+}
+
+.actuator-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24rpx 32rpx;
+}
+
+.actuator-item + .actuator-item {
+  border-top: 1rpx solid var(--color-border);
+}
+
+.actuator-left {
+  display: flex;
+  align-items: center;
+  gap: 16rpx;
+}
+
+.actuator-icon {
+  font-size: 32rpx;
+}
+
+.actuator-label {
+  font-size: 28rpx;
+  color: var(--color-text);
+  font-weight: 500;
+}
+
+.status-badge {
+  font-size: 24rpx;
+  font-weight: 500;
+  padding: 8rpx 20rpx;
+  border-radius: 24rpx;
+}
+
+.status-badge.on {
+  color: #FFF;
+  background: var(--color-success);
+}
+
+.status-badge.off {
+  color: var(--color-text-hint);
+  background: var(--color-border);
+}
+
+/* ===== 阈值列表 ===== */
+.threshold-list {
+  background: var(--color-card);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+}
+
+.thr-item {
+  display: flex;
+  align-items: center;
+  padding: 20rpx 32rpx;
+}
+
+.thr-item + .thr-item {
+  border-top: 1rpx solid var(--color-border);
+}
+
+.thr-icon {
+  font-size: 28rpx;
+  margin-right: 16rpx;
+  width: 40rpx;
+  text-align: center;
+}
+
+.thr-label {
+  flex: 1;
+  font-size: 28rpx;
+  color: var(--color-text);
+}
+
+.thr-value {
+  font-size: 26rpx;
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+/* ===== 底部留白 ===== */
+.bottom-space {
+  height: 40rpx;
+}

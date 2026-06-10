@@ -1,0 +1,12 @@
+build/
+.pio/
+.pioenvs/
+.piolibdeps/
+.vscode/
+.idea/
+*.o
+*.d
+*.elf
+*.bin
+*.map
+node_modules/

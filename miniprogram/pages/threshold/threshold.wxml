@@ -1,0 +1,114 @@
+<!-- 阈值设置 - 报警参数配置 -->
+<view class="page">
+
+  <!-- 顶部 -->
+  <view class="thr-hero">
+    <text class="thr-hero-icon">⚙️</text>
+    <text class="thr-hero-title">报警阈值配置</text>
+    <text class="thr-hero-sub">超过阈值将触发蜂鸣器报警</text>
+  </view>
+
+  <!-- 成功提示 -->
+  <view wx:if="{{saved}}" class="toast-bar">
+    <text>✓ 阈值已保存并下发到设备</text>
+  </view>
+
+  <!-- 温度阈值 -->
+  <view class="thr-group">
+    <view class="thr-group-header">
+      <text class="thr-group-icon">🌡️</text>
+      <text class="thr-group-title">温度阈值</text>
+    </view>
+
+    <view class="thr-card">
+      <view class="thr-card-top">
+        <view class="thr-card-label-row">
+          <text class="thr-card-label">上限（过热报警）</text>
+          <text class="thr-card-val hot">{{temp_max}}°C</text>
+        </view>
+        <slider min="-10" max="60" step="0.5" value="{{temp_max}}"
+          activeColor="#E74C3C" backgroundColor="#E5E6EB" block-size="22" block-color="#E74C3C"
+          bindchange="onTempMax" />
+      </view>
+      <view class="thr-divider"></view>
+      <view class="thr-card-top">
+        <view class="thr-card-label-row">
+          <text class="thr-card-label">下限（过冷报警）</text>
+          <text class="thr-card-val cold">{{temp_min}}°C</text>
+        </view>
+        <slider min="-10" max="60" step="0.5" value="{{temp_min}}"
+          activeColor="#3498DB" backgroundColor="#E5E6EB" block-size="22" block-color="#3498DB"
+          bindchange="onTempMin" />
+      </view>
+    </view>
+  </view>
+
+  <!-- 湿度阈值 -->
+  <view class="thr-group">
+    <view class="thr-group-header">
+      <text class="thr-group-icon">💧</text>
+      <text class="thr-group-title">湿度阈值</text>
+    </view>
+
+    <view class="thr-card">
+      <view class="thr-card-top">
+        <view class="thr-card-label-row">
+          <text class="thr-card-label">上限（过湿报警）</text>
+          <text class="thr-card-val humid">{{hum_max}}%</text>
+        </view>
+        <slider min="0" max="100" step="1" value="{{hum_max}}"
+          activeColor="#00B4D8" backgroundColor="#E5E6EB" block-size="22" block-color="#00B4D8"
+          bindchange="onHumMax" />
+      </view>
+      <view class="thr-divider"></view>
+      <view class="thr-card-top">
+        <view class="thr-card-label-row">
+          <text class="thr-card-label">下限（过干报警）</text>
+          <text class="thr-card-val dry">{{hum_min}}%</text>
+        </view>
+        <slider min="0" max="100" step="1" value="{{hum_min}}"
+          activeColor="#E67E22" backgroundColor="#E5E6EB" block-size="22" block-color="#E67E22"
+          bindchange="onHumMin" />
+      </view>
+    </view>
+  </view>
+
+  <!-- 其他阈值 -->
+  <view class="thr-group">
+    <view class="thr-group-header">
+      <text class="thr-group-icon">📐</text>
+      <text class="thr-group-title">其他阈值</text>
+    </view>
+
+    <view class="thr-card">
+      <view class="thr-card-top">
+        <view class="thr-card-label-row">
+          <text class="thr-card-label">光照下限（光照不足报警）</text>
+          <text class="thr-card-val light">{{light_min}}%</text>
+        </view>
+        <slider min="0" max="100" step="1" value="{{light_min}}"
+          activeColor="#F39C12" backgroundColor="#E5E6EB" block-size="22" block-color="#F39C12"
+          bindchange="onLightMin" />
+      </view>
+      <view class="thr-divider"></view>
+      <view class="thr-card-top">
+        <view class="thr-card-label-row">
+          <text class="thr-card-label">接近距离（距离过近报警）</text>
+          <text class="thr-card-val dist">{{dist_near}}cm</text>
+        </view>
+        <slider min="0" max="50" step="0.5" value="{{dist_near}}"
+          activeColor="#2ECC71" backgroundColor="#E5E6EB" block-size="22" block-color="#2ECC71"
+          bindchange="onDistNear" />
+      </view>
+    </view>
+  </view>
+
+  <!-- 保存按钮 -->
+  <view class="thr-btn-wrap">
+    <view class="thr-btn {{saving ? 'btn-saving' : ''}}" bindtap="onSave">
+      <text wx:if="{{!saving}}">💾 保存并下发到设备</text>
+      <text wx:else>下发中...</text>
+    </view>
+  </view>
+
+</view>

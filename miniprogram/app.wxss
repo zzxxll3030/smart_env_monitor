@@ -1,0 +1,25 @@
+page {
+  --color-primary: #00B4D8;
+  --color-primary-dark: #0077B6;
+  --color-success: #2ECC71;
+  --color-warning: #F39C12;
+  --color-error: #E74C3C;
+  --color-temp: #E74C3C;
+  --color-humid: #00B4D8;
+  --color-light: #F39C12;
+  --color-dist: #2ECC71;
+  --color-bg: #F0F4F8;
+  --color-card: #FFFFFF;
+  --color-text: #1D2129;
+  --color-text-secondary: #4E5969;
+  --color-text-hint: #86909C;
+  --color-border: #E5E6EB;
+  --radius-card: 16rpx;
+  --shadow-card: 0 2rpx 12rpx rgba(0, 0, 0, 0.08);
+
+  font-family: -apple-system, 'PingFang SC', sans-serif;
+  font-size: 28rpx;
+  color: var(--color-text);
+  background: var(--color-bg);
+  box-sizing: border-box;
+}

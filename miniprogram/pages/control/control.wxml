@@ -1,0 +1,84 @@
+<!-- 设备控制 - 执行器开关 -->
+<view class="page">
+
+  <!-- 顶部状态 -->
+  <view class="ctrl-hero">
+    <text class="ctrl-hero-icon">⚡</text>
+    <text class="ctrl-hero-title">设备控制中心</text>
+    <text class="ctrl-hero-sub">管理 LED · 舵机 · 风扇</text>
+  </view>
+
+  <!-- 总览 -->
+  <view class="summary-bar">
+    <view class="summary-item">
+      <text class="sum-count">{{(ledOn ? 1 : 0) + (servoOn ? 1 : 0) + (motorOn ? 1 : 0)}}</text>
+      <text class="sum-label">已开启</text>
+    </view>
+    <view class="summary-div"></view>
+    <view class="summary-item">
+      <text class="sum-count">{{3 - (ledOn ? 1 : 0) - (servoOn ? 1 : 0) - (motorOn ? 1 : 0)}}</text>
+      <text class="sum-label">已关闭</text>
+    </view>
+  </view>
+
+  <!-- LED 灯 -->
+  <view class="ctrl-card">
+    <view class="ctrl-card-inner">
+      <view class="ctrl-left">
+        <view class="ctrl-icon-box led-icon">
+          <text class="ctrl-icon">💡</text>
+        </view>
+        <view>
+          <text class="ctrl-name">LED 照明灯</text>
+          <text class="ctrl-hint">GPIO 输出控制</text>
+        </view>
+      </view>
+      <switch checked="{{ledOn}}" bindchange="onLedToggle" color="#F39C12" class="ctrl-switch" />
+    </view>
+    <view class="ctrl-status {{ledOn ? 'on' : 'off'}}">
+      <view class="ctrl-dot {{ledOn ? 'dot-on' : 'dot-off'}}"></view>
+      <text>{{ledOn ? '照明中' : '已关闭'}}</text>
+    </view>
+  </view>
+
+  <!-- 舵机 -->
+  <view class="ctrl-card">
+    <view class="ctrl-card-inner">
+      <view class="ctrl-left">
+        <view class="ctrl-icon-box servo-icon">
+          <text class="ctrl-icon">⚙️</text>
+        </view>
+        <view>
+          <text class="ctrl-name">电动窗帘</text>
+          <text class="ctrl-hint">舵机 PWM 控制</text>
+        </view>
+      </view>
+      <switch checked="{{servoOn}}" bindchange="onServoToggle" color="#00B4D8" class="ctrl-switch" />
+    </view>
+    <view class="ctrl-status {{servoOn ? 'on' : 'off'}}">
+      <view class="ctrl-dot {{servoOn ? 'dot-on' : 'dot-off'}}"></view>
+      <text>{{servoOn ? '已打开' : '已关闭'}}</text>
+    </view>
+  </view>
+
+  <!-- 风扇 -->
+  <view class="ctrl-card">
+    <view class="ctrl-card-inner">
+      <view class="ctrl-left">
+        <view class="ctrl-icon-box fan-icon">
+          <text class="ctrl-icon">🌀</text>
+        </view>
+        <view>
+          <text class="ctrl-name">散热风扇</text>
+          <text class="ctrl-hint">直流电机 PWM</text>
+        </view>
+      </view>
+      <switch checked="{{motorOn}}" bindchange="onMotorToggle" color="#2ECC71" class="ctrl-switch" />
+    </view>
+    <view class="ctrl-status {{motorOn ? 'on' : 'off'}}">
+      <view class="ctrl-dot {{motorOn ? 'dot-on' : 'dot-off'}}"></view>
+      <text>{{motorOn ? '运转中 (80%)' : '已关闭'}}</text>
+    </view>
+  </view>
+
+</view>

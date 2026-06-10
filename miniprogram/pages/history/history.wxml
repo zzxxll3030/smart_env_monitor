@@ -1,0 +1,109 @@
+<!-- 我的 - 全部数据与状态总览 -->
+<scroll-view class="page" scroll-y>
+
+  <!-- ===== 设备信息 ===== -->
+  <view class="section">
+    <view class="section-header">
+      <text class="section-title">设备信息</text>
+    </view>
+    <view class="info-card">
+      <view class="info-row">
+        <text class="info-label">产品 ID</text>
+        <text class="info-value mono">{{productId}}</text>
+      </view>
+      <view class="info-divider"></view>
+      <view class="info-row">
+        <text class="info-label">设备名称</text>
+        <text class="info-value mono">{{deviceName}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- ===== 传感器数据 ===== -->
+  <view class="section">
+    <view class="section-header">
+      <text class="section-title">传感器数据</text>
+      <text class="section-time" wx:if="{{updateTime}}">更新于 {{updateTime}}</text>
+    </view>
+    <view class="sensor-grid">
+      <view class="sensor-item temp">
+        <text class="sensor-icon">🌡️</text>
+        <text class="sensor-value">{{temp}}</text>
+        <text class="sensor-unit">°C</text>
+        <text class="sensor-label">温度</text>
+      </view>
+      <view class="sensor-item humid">
+        <text class="sensor-icon">💧</text>
+        <text class="sensor-value">{{humidity}}</text>
+        <text class="sensor-unit">%</text>
+        <text class="sensor-label">湿度</text>
+      </view>
+      <view class="sensor-item light">
+        <text class="sensor-icon">☀️</text>
+        <text class="sensor-value">{{light}}</text>
+        <text class="sensor-unit">%</text>
+        <text class="sensor-label">光照</text>
+      </view>
+      <view class="sensor-item dist">
+        <text class="sensor-icon">📏</text>
+        <text class="sensor-value">{{distance}}</text>
+        <text class="sensor-unit">cm</text>
+        <text class="sensor-label">距离</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- ===== 执行器状态 ===== -->
+  <view class="section">
+    <view class="section-header">
+      <text class="section-title">执行器状态</text>
+    </view>
+    <view class="actuator-list">
+      <view class="actuator-item">
+        <view class="actuator-left">
+          <text class="actuator-icon">💡</text>
+          <text class="actuator-label">LED 灯</text>
+        </view>
+        <view class="status-badge {{ledOn ? 'on' : 'off'}}">
+          {{ledOn ? '已开启' : '已关闭'}}
+        </view>
+      </view>
+      <view class="actuator-item">
+        <view class="actuator-left">
+          <text class="actuator-icon">⚙️</text>
+          <text class="actuator-label">舵机</text>
+        </view>
+        <view class="status-badge {{servoOn ? 'on' : 'off'}}">
+          {{servoOn ? '已开启' : '已关闭'}}
+        </view>
+      </view>
+      <view class="actuator-item">
+        <view class="actuator-left">
+          <text class="actuator-icon">🌀</text>
+          <text class="actuator-label">风扇</text>
+        </view>
+        <view class="status-badge {{motorOn ? 'on' : 'off'}}">
+          {{motorOn ? '已开启' : '已关闭'}}
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- ===== 阈值配置 ===== -->
+  <view class="section">
+    <view class="section-header">
+      <text class="section-title">阈值配置</text>
+    </view>
+    <view class="threshold-list">
+      <view class="thr-item" wx:for="{{thresholds}}" wx:key="key">
+        <text class="thr-icon">{{item.icon}}</text>
+        <text class="thr-label">{{item.label}}</text>
+        <text class="thr-value">{{item.value}} {{item.unit}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 底部留白 -->
+  <view class="bottom-space"></view>
+
+</scroll-view>

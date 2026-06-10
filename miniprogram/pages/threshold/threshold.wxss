@@ -1,0 +1,150 @@
+/* 阈值设置 */
+.page {
+  padding: 0 24rpx 32rpx;
+  min-height: 100vh;
+}
+
+/* ===== 顶部 ===== */
+.thr-hero {
+  margin: 0 -24rpx 24rpx;
+  padding: 36rpx 32rpx 32rpx;
+  background: linear-gradient(160deg, #5B2C6F 0%, #8E44AD 50%, #BB8FCE 100%);
+  border-radius: 0 0 32rpx 32rpx;
+  color: #FFF;
+  text-align: center;
+}
+
+.thr-hero-icon {
+  font-size: 44rpx;
+  display: block;
+  margin-bottom: 10rpx;
+}
+
+.thr-hero-title {
+  font-size: 34rpx;
+  font-weight: 600;
+  display: block;
+}
+
+.thr-hero-sub {
+  font-size: 22rpx;
+  opacity: 0.7;
+  margin-top: 6rpx;
+  display: block;
+}
+
+/* ===== 成功提示 ===== */
+.toast-bar {
+  background: #E8F5E9;
+  color: #27AE60;
+  text-align: center;
+  padding: 16rpx;
+  border-radius: 12rpx;
+  font-size: 24rpx;
+  font-weight: 500;
+  margin-bottom: 24rpx;
+  animation: fadeIn 0.3s;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10rpx); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== 阈值分组 ===== */
+.thr-group {
+  margin-bottom: 28rpx;
+}
+
+.thr-group-header {
+  display: flex;
+  align-items: center;
+  gap: 10rpx;
+  padding: 0 8rpx 14rpx;
+}
+
+.thr-group-icon {
+  font-size: 28rpx;
+}
+
+.thr-group-title {
+  font-size: 26rpx;
+  font-weight: 600;
+  color: #1D2129;
+}
+
+/* 卡片 */
+.thr-card {
+  background: #FFFFFF;
+  border-radius: 20rpx;
+  box-shadow: 0 4rpx 20rpx rgba(0,0,0,0.06);
+  overflow: hidden;
+}
+
+.thr-card-top {
+  padding: 24rpx 28rpx 20rpx;
+}
+
+.thr-card-label-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12rpx;
+}
+
+.thr-card-label {
+  font-size: 26rpx;
+  color: #1D2129;
+}
+
+.thr-card-val {
+  font-size: 34rpx;
+  font-weight: 700;
+}
+
+.thr-card-val.hot    { color: #E74C3C; }
+.thr-card-val.cold   { color: #3498DB; }
+.thr-card-val.humid  { color: #00B4D8; }
+.thr-card-val.dry    { color: #E67E22; }
+.thr-card-val.light  { color: #F39C12; }
+.thr-card-val.dist   { color: #2ECC71; }
+
+.thr-divider {
+  height: 1rpx;
+  background: #E5E6EB;
+  margin: 0 28rpx;
+}
+
+/* slider 微调 */
+slider {
+  margin: 0;
+}
+
+/* ===== 保存按钮 ===== */
+.thr-btn-wrap {
+  padding: 28rpx 0 40rpx;
+}
+
+.thr-btn {
+  width: 100%;
+  height: 100rpx;
+  border-radius: 50rpx;
+  background: linear-gradient(135deg, #8E44AD, #5B2C6F);
+  color: #FFF;
+  font-size: 30rpx;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6rpx 24rpx rgba(142, 68, 173, 0.35);
+  transition: all 0.2s;
+}
+
+.thr-btn:active {
+  transform: scale(0.97);
+  box-shadow: 0 2rpx 12rpx rgba(142, 68, 173, 0.25);
+}
+
+.thr-btn.btn-saving {
+  opacity: 0.65;
+}

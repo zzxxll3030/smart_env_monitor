@@ -1,0 +1,201 @@
+/* 数据看板 */
+.page {
+  padding: 0 24rpx 32rpx;
+  min-height: 100vh;
+}
+
+/* ===== 顶部 Hero ===== */
+.hero {
+  margin: 0 -24rpx 24rpx;
+  padding: 48rpx 32rpx 36rpx;
+  background: linear-gradient(160deg, #0077B6 0%, #00B4D8 50%, #48CAE4 100%);
+  border-radius: 0 0 32rpx 32rpx;
+  color: #FFF;
+}
+
+.hero-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24rpx;
+}
+
+.hero-tag {
+  font-size: 22rpx;
+  background: rgba(255,255,255,0.2);
+  padding: 6rpx 18rpx;
+  border-radius: 20rpx;
+}
+
+.hero-refresh {
+  font-size: 24rpx;
+  opacity: 0.85;
+  padding: 4rpx 0;
+}
+
+.hero-refresh:active { opacity: 0.6; }
+
+.hero-time {
+  font-size: 80rpx;
+  font-weight: 300;
+  letter-spacing: 4rpx;
+  font-family: 'SF Mono', 'Menlo', monospace;
+  line-height: 1;
+}
+
+.hero-sub {
+  font-size: 22rpx;
+  opacity: 0.7;
+  margin-top: 12rpx;
+}
+
+/* ===== 错误 ===== */
+.error-bar {
+  background: #FFF3F3;
+  border-radius: 12rpx;
+  padding: 16rpx 24rpx;
+  margin-bottom: 24rpx;
+}
+
+.error-text {
+  font-size: 24rpx;
+  color: var(--color-error);
+}
+
+/* ===== 加载 ===== */
+.loading {
+  text-align: center;
+  padding: 80rpx 0;
+  color: var(--color-text-hint);
+  font-size: 28rpx;
+}
+
+.loading-spinner {
+  width: 48rpx;
+  height: 48rpx;
+  border: 4rpx solid var(--color-border);
+  border-top-color: var(--color-primary);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin: 0 auto 20rpx;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ===== 传感器卡片 ===== */
+.card-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20rpx;
+}
+
+.sensor-card {
+  background: var(--color-card);
+  border-radius: 20rpx;
+  padding: 28rpx 24rpx 20rpx;
+  box-shadow: 0 4rpx 20rpx rgba(0,0,0,0.06);
+  position: relative;
+  overflow: hidden;
+}
+
+/* 左侧彩色指示条 */
+.sensor-card::after {
+  content: '';
+  position: absolute;
+  top: 28rpx;
+  left: 0;
+  width: 6rpx;
+  height: 40rpx;
+  border-radius: 0 3rpx 3rpx 0;
+}
+
+.card-temp::after  { background: var(--color-temp); }
+.card-humid::after { background: var(--color-humid); }
+.card-light::after { background: var(--color-light); }
+.card-dist::after  { background: var(--color-dist); }
+
+.sc-top {
+  display: flex;
+  flex-direction: column;
+  padding-left: 12rpx;
+}
+
+.sc-label-row {
+  display: flex;
+  align-items: center;
+  gap: 8rpx;
+  margin-bottom: 12rpx;
+}
+
+.sc-icon {
+  font-size: 28rpx;
+}
+
+.sc-label {
+  font-size: 24rpx;
+  color: var(--color-text-hint);
+}
+
+.sc-value {
+  font-size: 64rpx;
+  font-weight: 700;
+  line-height: 1;
+  padding-left: 12rpx;
+}
+
+.sc-unit {
+  font-size: 22rpx;
+  color: var(--color-text-hint);
+  padding-left: 14rpx;
+  margin-top: 4rpx;
+}
+
+/* 进度条 */
+.sc-bar {
+  height: 8rpx;
+  background: #F0F0F0;
+  border-radius: 4rpx;
+  margin: 16rpx 0 8rpx;
+  overflow: hidden;
+}
+
+.sc-bar-fill {
+  height: 100%;
+  border-radius: 4rpx;
+  transition: width 0.4s ease;
+}
+
+.sc-range {
+  text-align: right;
+  font-size: 20rpx;
+  color: var(--color-text-hint);
+}
+
+/* ===== 底部状态 ===== */
+.status-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12rpx;
+  padding: 36rpx 0 20rpx;
+}
+
+.status-pulse {
+  width: 14rpx;
+  height: 14rpx;
+  border-radius: 50%;
+  background: var(--color-success);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(46, 204, 113, 0.4); }
+  50%      { box-shadow: 0 0 0 10rpx rgba(46, 204, 113, 0); }
+}
+
+.status-text {
+  font-size: 24rpx;
+  color: var(--color-text-hint);
+}
