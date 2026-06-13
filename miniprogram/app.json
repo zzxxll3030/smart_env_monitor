@@ -18,19 +18,27 @@
     "list": [
       {
         "pagePath": "pages/dashboard/dashboard",
-        "text": "数据看板"
+        "text": "数据看板",
+        "iconPath": "images/dashboard.png",
+        "selectedIconPath": "images/dashboard-active.png"
       },
       {
         "pagePath": "pages/control/control",
-        "text": "设备控制"
+        "text": "设备控制",
+        "iconPath": "images/control.png",
+        "selectedIconPath": "images/control-active.png"
       },
       {
         "pagePath": "pages/threshold/threshold",
-        "text": "阈值设置"
+        "text": "阈值设置",
+        "iconPath": "images/threshold.png",
+        "selectedIconPath": "images/threshold-active.png"
       },
       {
         "pagePath": "pages/history/history",
-        "text": "我的"
+        "text": "我的",
+        "iconPath": "images/history.png",
+        "selectedIconPath": "images/history-active.png"
       }
     ]
   },
