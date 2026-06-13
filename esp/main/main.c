@@ -1,4 +1,6 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
 #include <string.h>
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
@@ -280,6 +282,9 @@ static void mqtt_event_handler(void *arg, esp_event_base_t base, int32_t event_i
         ESP_LOGI(TAG, "MQTT Connected");
         esp_mqtt_client_subscribe(mqtt_client, TOPIC_CMD, 0);
         break;
+    case MQTT_EVENT_DISCONNECTED:
+        ESP_LOGW(TAG, "MQTT Disconnected, auto-reconnecting...");
+        break;
     case MQTT_EVENT_DATA:
         ESP_LOGI(TAG, "CMD: %.*s", evt->data_len, evt->data);
         handle_cloud_set(evt->data, evt->data_len);
@@ -370,23 +375,25 @@ static void uart_to_mqtt_task(void *arg)
                     float t = 0, h = 0;
                     int l = 0;
                     float d = 0;
-                    sscanf(start, "{\"t\":%f,\"h\":%f,\"l\":%d,\"d\":%f}",
-                           &t, &h, &l, &d);
+                    if (sscanf(start, "{\"t\":%f,\"h\":%f,\"l\":%d,\"d\":%f}",
+                               &t, &h, &l, &d) != 4) {
+                        ESP_LOGW(TAG, "[UART] Invalid sensor JSON: %s", start);
+                    } else {
+                        char onejson[256];
+                        snprintf(onejson, sizeof(onejson),
+                            "{\"id\":\"%lu\","
+                            "\"version\":\"1.0\","
+                            "\"params\":{"
+                            "\"temp_value\":{\"value\":%.1f},"
+                            "\"humidity_value\":{\"value\":%.0f},"
+                            "\"light_value\":{\"value\":%d},"
+                            "\"dist_value\":{\"value\":%.1f}"
+                            "}}",
+                            (unsigned long)xTaskGetTickCount(), t, h, l, d);
 
-                    char onejson[256];
-                    snprintf(onejson, sizeof(onejson),
-                        "{\"id\":\"%ld\","
-                        "\"version\":\"1.0\","
-                        "\"params\":{"
-                        "\"temp_value\":{\"value\":%.1f},"
-                        "\"humidity_value\":{\"value\":%.0f},"
-                        "\"light_value\":{\"value\":%d},"
-                        "\"dist_value\":{\"value\":%.1f}"
-                        "}}",
-                        (long)xTaskGetTickCount(), t, h, l, d);
-
-                    int msg_id = esp_mqtt_client_publish(mqtt_client, TOPIC_DATA, onejson, 0, 1, 0);
-                    ESP_LOGI(TAG, "[UART->MQTT] %s (msg_id=%d)", onejson, msg_id);
+                        int msg_id = esp_mqtt_client_publish(mqtt_client, TOPIC_DATA, onejson, 0, 1, 0);
+                        ESP_LOGI(TAG, "[UART->MQTT] %s (msg_id=%d)", onejson, msg_id);
+                    }
                 }
             }
         }
